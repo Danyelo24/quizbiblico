@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Bíblico | RVR1960</title>
+    <title>Quiz Biblico | Danyelo</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <style>
@@ -99,8 +99,8 @@
         <h2>Bienvenido</h2>
         <div style="text-align:left; font-size:14px; margin-bottom:20px;">
             <p>• Basado en la Reina Valera 1960.</p>
-            <p>• Escudriñad las Escrituras porque en ellas tenéis la vida eterna.</p>
-            <label style="font-weight:800; cursor:pointer;"><input type="checkbox" id="check-terms"> Acepto participar con respeto</label>
+            <p>• El objetivo de este quiz es fomentar el aprendizaje biblico, y a su vez reforzar conocimientos no aprendidos a travéz de ejercicios dinámicos.</p>
+            <label style="font-weight:800; cursor:pointer;"><input type="checkbox" id="check-terms"> Acepto</label>
         </div>
         <button class="mc-btn" onclick="if(document.getElementById('check-terms').checked) nav('scr-modes'); else alert('Debes aceptar para continuar');">SIGUIENTE</button>
     </div>
@@ -162,85 +162,71 @@
 
 <script>
     const dbAprendiz = [
-        { q: "¿Cuantos mandamientos recibio Moises?", a: "10", o: ["5", "7", "12"], r: "Exodo 20", d: "Facil", c: "var(--easy)" },
-        { q: "¿Quien vencio al gigante Goliat?", a: "David", o: ["Sanson", "Saul", "Josue"], r: "1 Samuel 17", d: "Facil", c: "var(--easy)" },
-        { q: "Primer libro de la Biblia", a: "Genesis", o: ["Exodo", "Mateo", "Salmos"], r: "Genesis 1:1", d: "Facil", c: "var(--easy)" }
+        { q: "¿Quién construyó el arca?", a: "Noé", o: ["Moisés", "Abraham", "Saúl"], r: "Génesis 6", d: "Fácil", c: "var(--easy)" },
+        { q: "¿Quién derrotó a Goliat?", a: "David", o: ["Salomón", "Sansón", "Gedeón"], r: "1 Sam 17", d: "Fácil", c: "var(--easy)" },
+        { q: "¿Cuántos discípulos tenía Jesús?", a: "12", o: ["10", "7", "40"], r: "Mateo 10", d: "Fácil", c: "var(--easy)" },
+        { q: "¿Cuál es el primer libro de la Biblia?", a: "Génesis", o: ["Éxodo", "Mateo", "Apocalipsis"], r: "Génesis 1", d: "Fácil", c: "var(--easy)" },
+        { q: "¿Quién fue tragado por un gran pez?", a: "Jonás", o: ["Pedro", "Pablo", "Noé"], r: "Jonás 1", d: "Fácil", c: "var(--easy)" },
+        { q: "¿En qué río fue bautizado Jesús?", a: "Jordán", o: ["Nilo", "Éufrates", "Tigris"], r: "Mateo 3", d: "Fácil", c: "var(--easy)" },
+        { q: "¿Quién recibió los 10 Mandamientos?", a: "Moisés", o: ["Aarón", "Josué", "Elías"], r: "Éxodo 20", d: "Fácil", c: "var(--easy)" },
+        { q: "¿Quién fue el hombre más fuerte?", a: "Sansón", o: ["Goliat", "David", "Hércules"], r: "Jueces 13", d: "Fácil", c: "var(--easy)" },
+        { q: "¿Cómo se llamaba la esposa de Adán?", a: "Eva", o: ["Sara", "María", "Rut"], r: "Génesis 2", d: "Fácil", c: "var(--easy)" },
+        { q: "¿Quién traicionó a Jesús por 30 monedas?", a: "Judas Iscariote", o: ["Pedro", "Tomás", "Juan"], r: "Mateo 26", d: "Fácil", c: "var(--easy)" },
+        { q: "¿Quién fue el hombre más sabio?", a: "Salomón", o: ["Daniel", "José", "Job"], r: "1 Reyes 3", d: "Fácil", c: "var(--easy)" },
+        { q: "¿Cuál es el último libro de la Biblia?", a: "Apocalipsis", o: ["Judas", "Malaquías", "Hechos"], r: "Apo 22", d: "Fácil", c: "var(--easy)" },
+        { q: "¿Quién fue vendido por sus hermanos?", a: "José", o: ["Isaac", "Jacob", "David"], r: "Génesis 37", d: "Fácil", c: "var(--easy)" },
+        { q: "¿Quién resucitó al tercer día?", a: "Jesús", o: ["Lázaro", "Enoc", "Elías"], r: "Lucas 24", d: "Fácil", c: "var(--easy)" },
+        { q: "¿En qué ciudad nació Jesús?", a: "Belén", o: ["Nazaret", "Jerusalén", "Egipto"], r: "Mateo 2", d: "Fácil", c: "var(--easy)" }
     ];
 
     const dbTeologo = [
-        { q: "¿Cual era el nombre del escriba que escribio las profecias de Jeremias?", a: "Baruc", o: ["Esdras", "Guepazi", "Seraías"], r: "Jeremias 36:4", d: "Leyenda", c: "var(--legendary)" },
-        { q: "¿En que monte murio Aaron, hermano de Moises?", a: "Monte Hor", o: ["Monte Nebo", "Monte Sinai", "Monte Carmelo"], r: "Numeros 20:28", d: "Leyenda", c: "var(--legendary)" },
-        { q: "¿Cual era el nombre del padre de Matusalen?", a: "Enoc", o: ["Lamec", "Set", "Jared"], r: "Genesis 5:21", d: "Divino", c: "var(--divine)" },
-        { q: "¿Quien fue el unico juez de Israel que mato a 600 filisteos con una aguijada de bueyes?", a: "Samgar", o: ["Otoniel", "Aod", "Sansón"], r: "Jueces 3:31", d: "Divino", c: "var(--divine)" },
-        { q: "¿Como se llamaba la mujer de Lapidot que fue Jueza en Israel?", a: "Débora", o: ["Jael", "Rahab", "Noemí"], r: "Jueces 4:4", d: "Divino", c: "var(--divine)" }
+        { q: "¿Quién fue el primer polígamo mencionado?", a: "Lamec", o: ["Jacob", "Nimrod", "Esaú"], r: "Génesis 4:19", d: "Teólogo", c: "var(--hard)" },
+        { q: "¿Qué rey de Israel se suicidó?", a: "Saúl", o: ["Acab", "Omri", "Roboam"], r: "1 Sam 31:4", d: "Teólogo", c: "var(--hard)" },
+        { q: "¿Cómo se llamaba el padre de Matusalén?", a: "Enoc", o: ["Lamec", "Jared", "Set"], r: "Génesis 5:21", d: "Teólogo", c: "var(--hard)" },
+        { q: "¿Qué juez mató a 600 filisteos con una aguijada?", a: "Samgar", o: ["Aod", "Sansón", "Otoniel"], r: "Jueces 3:31", d: "Teólogo", c: "var(--hard)" },
+        { q: "¿Qué profeta vio el valle de huesos secos?", a: "Ezequiel", o: ["Isaías", "Jeremías", "Daniel"], r: "Ezequiel 37", d: "Teólogo", c: "var(--hard)" },
+        { q: "¿Compañero de Pablo en su primer viaje misionero?", a: "Bernabé", o: ["Silas", "Lucas", "Timoteo"], r: "Hechos 13", d: "Teólogo", c: "var(--hard)" },
+        { q: "¿En qué monte murió Aarón?", a: "Monte Hor", o: ["Monte Nebo", "Monte Sinaí", "Monte Carmelo"], r: "Números 20:28", d: "Teólogo", c: "var(--hard)" },
+        { q: "¿Única mujer que gobernó como reina en Judá?", a: "Atalía", o: ["Jezabel", "Vasti", "Ester"], r: "2 Reyes 11", d: "Teólogo", c: "var(--hard)" },
+        { q: "¿Ciudad conquistada con trompetas?", a: "Jericó", o: ["Hai", "Damasco", "Gabaón"], r: "Josué 6", d: "Teólogo", c: "var(--hard)" },
+        { q: "¿Rey de Salem y sacerdote del Dios Altísimo?", a: "Melquisedec", o: ["Abimelec", "Ciro", "Esdras"], r: "Génesis 14:18", d: "Teólogo", c: "var(--hard)" },
+        { q: "¿Tribu que no recibió herencia de tierra?", a: "Leví", o: ["Dan", "Gad", "Benjamín"], r: "Josué 13", d: "Teólogo", c: "var(--hard)" },
+        { q: "¿Quién escribió Lamentaciones?", a: "Jeremías", o: ["Baruc", "Isaías", "Ezequiel"], r: "Lam 1", d: "Teólogo", c: "var(--hard)" },
+        { q: "¿Mujer que escondió a los espías en Jericó?", a: "Rahab", o: ["Débora", "Rut", "Jael"], r: "Josué 2", d: "Teólogo", c: "var(--hard)" },
+        { q: "¿Apóstol exiliado en Patmos?", a: "Juan", o: ["Pedro", "Pablo", "Andrés"], r: "Apo 1:9", d: "Teólogo", c: "var(--hard)" },
+        { q: "¿Mar donde Jesús calmó la tempestad?", a: "Mar de Galilea", o: ["Mar Rojo", "Mar Muerto", "Mar Mediterráneo"], r: "Marcos 4", d: "Teólogo", c: "var(--hard)" }
     ];
 
-    let quizData = [], current = 0, pName = "", answers = [], lastDiff = "";
-
-    window.onload = () => {
+    let quizData = [], current = 0, pName = "", answers = [];
+    window.onload = () => { 
         for(let i=0; i<15; i++) createBubble();
-        let v = localStorage.getItem('v_total') || 0;
-        localStorage.setItem('v_total', ++v);
+        let v = localStorage.getItem('vistas') || 0;
+        localStorage.setItem('vistas', ++v);
         document.getElementById('val-vistas').innerText = v;
-        document.getElementById('val-online').innerText = 1;
-        loadComments();
     };
-
     function createBubble() {
         const b = document.createElement('div'); b.className = 'bubble';
         const s = Math.random()*60+20+"px"; b.style.width=s; b.style.height=s;
         b.style.left=Math.random()*100+"vw"; b.style.animationDuration=Math.random()*10+10+"s";
         document.body.appendChild(b);
     }
-
-    function setMode(m) { 
-        quizData = m === 'aprendiz' ? [...dbAprendiz] : [...dbTeologo].sort(()=>Math.random()-0.5); 
-        if(m === 'teologo') nav('scr-warn-teo');
-        else nav('scr-name');
-    }
-
-    function startGame() {
-        const nameInput = document.getElementById('user-name').value.trim();
-        const warning = document.getElementById('name-warning');
-        
-        if(nameInput === "") {
-            warning.style.display = 'block';
-            return;
-        }
-        
-        warning.style.display = 'none';
-        pName = nameInput;
-        quizData.forEach(q => q.mix = [q.a, ...q.o].sort(()=>Math.random()-0.5));
-        document.getElementById('global-nav').style.display = 'flex';
-        loadQuestion(0);
-    }
-
+    function setMode(m) { quizData = m === 'aprendiz' ? [...dbAprendiz] : [...dbTeologo]; nav('scr-name'); }
+    function startGame() { pName = document.getElementById('user-name').value || "Invitado"; document.getElementById('global-nav').style.display = 'flex'; loadQuestion(0); }
     function loadQuestion(idx) {
-        const q = quizData[idx];
-        if(q.d !== lastDiff) {
-            const cin = document.getElementById('cinema');
-            cin.innerText = q.d; cin.style.backgroundColor = q.c;
-            cin.classList.add('show');
-            setTimeout(() => { cin.classList.remove('show'); displayQ(idx); }, 1400);
-            lastDiff = q.d;
-        } else { displayQ(idx); }
-    }
-
-    function displayQ(idx) {
         current = idx; const q = quizData[idx]; nav('scr-quiz');
         document.getElementById('diff-tag').innerText = q.d;
         document.getElementById('diff-tag').style.backgroundColor = q.c;
         document.getElementById('q-text').innerText = q.q;
-        document.getElementById('ref-text').style.display = 'none';
         document.getElementById('btn-next').style.display = 'none';
+        document.getElementById('ref-text').style.display = 'none';
         const box = document.getElementById('options-box'); box.innerHTML = "";
-        q.mix.forEach((opt) => {
+        const opts = [q.a, ...q.o].sort(() => Math.random() - 0.5);
+        opts.forEach(opt => {
             const d = document.createElement('div'); d.className = 'option'; d.innerText = opt;
             d.onclick = () => {
                 answers[idx] = opt;
                 document.querySelectorAll('.option').forEach(el => el.style.pointerEvents = 'none');
                 d.classList.add(opt === q.a ? 'correct' : 'wrong');
-                if(opt !== q.a) document.querySelectorAll('.option').forEach(el => { if(el.innerText === q.a) el.classList.add('correct'); });
                 document.getElementById('ref-text').innerText = "Cita: " + q.r;
                 document.getElementById('ref-text').style.display = 'block';
                 document.getElementById('btn-next').style.display = 'block';
@@ -248,62 +234,40 @@
             box.appendChild(d);
         });
     }
-
-    function nextStep() {
-        if(current < quizData.length - 1) loadQuestion(current + 1);
-        else finishGame();
-    }
-
-    function finishGame() {
-        nav('scr-end');
-        let correct = answers.filter((a,i)=> a === quizData[i].a).length;
-        let p = Math.round((correct/quizData.length)*100);
-        document.getElementById('final-res').innerText = "¡Terminado, " + pName + "!";
-        document.getElementById('final-score').innerText = "Puntaje: " + p + "%";
-        document.getElementById('final-badge').innerText = p >= 80 ? "??" : "??";
-        confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
-    }
-
-    function saveComment() {
-        const text = document.getElementById('comm-in').value; if(!text) return;
-        let correct = answers.filter((a,i)=> a === quizData[i].a).length;
-        let p = Math.round((correct/quizData.length)*100);
-        const cObj = { name: pName, msg: text, score: p, color: p >= 70 ? 'green' : 'orange' };
-        let all = JSON.parse(localStorage.getItem('bib_comms') || "[]");
-        all.push(cObj); localStorage.setItem('bib_comms', JSON.stringify(all));
-        loadComments(); document.getElementById('comm-in').value = "";
-    }
-
-    function loadComments() {
-        const box = document.getElementById('comm-list'); box.innerHTML = "";
-        let all = JSON.parse(localStorage.getItem('bib_comms') || "[]");
-        all.reverse().forEach(c => {
-            const d = document.createElement('div');
-            d.style = "font-size:12px; margin-bottom:8px; border-bottom:1px solid #eee; display:flex; justify-content:space-between;";
-            d.innerHTML = `<span><b>${c.name}:</b> ${c.msg}</span> <b style="color:${c.color}">${c.score}%</b>`;
-            box.appendChild(d);
-        });
-    }
-
+    function nextStep() { if(current < quizData.length - 1) loadQuestion(current + 1); else finish(); }
     function renderMap() {
         const map = document.getElementById('map-render'); map.innerHTML = "";
         quizData.forEach((q, i) => {
             const node = document.createElement('div');
-            node.style = `width:70px; height:70px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-weight:800; margin:20px auto; background-color:${answers[i] ? q.c : "#e5e5e5"}`;
+            node.style = `width:40px; height:40px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; color:white; margin:5px; background:${answers[i] ? q.c : '#ccc'}`;
             node.innerText = i + 1;
             map.appendChild(node);
         });
     }
-
+    function finish() {
+        nav('scr-end');
+        let c = answers.filter((a,i) => a === quizData[i].a).length;
+        document.getElementById('final-res').innerText = "¡Terminado!";
+        document.getElementById('final-score').innerText = c + "/" + quizData.length;
+        confetti({ particleCount: 150, spread: 70 });
+        loadComments();
+    }
+    function saveComment() {
+        const text = document.getElementById('comm-in').value; if(!text) return;
+        let all = JSON.parse(localStorage.getItem('comms') || "[]");
+        all.push({n: pName, m: text}); localStorage.setItem('comms', JSON.stringify(all));
+        loadComments(); document.getElementById('comm-in').value = "";
+    }
+    function loadComments() {
+        const box = document.getElementById('comm-list'); box.innerHTML = "";
+        let all = JSON.parse(localStorage.getItem('comms') || "[]");
+        all.reverse().forEach(c => { box.innerHTML += `<p style="font-size:12px;"><b>${c.n}:</b> ${c.m}</p>`; });
+    }
     function nav(id) {
-        const active = document.querySelector('.screen.active');
-        if(active) { active.classList.remove('active'); setTimeout(() => active.style.display = 'none', 400); }
-        setTimeout(() => { const next = document.getElementById(id); next.style.display = 'flex'; setTimeout(() => next.classList.add('active'), 50); }, 450);
+        document.querySelectorAll('.screen').forEach(s => { s.classList.remove('active'); s.style.display = 'none'; });
+        const next = document.getElementById(id); next.style.display = 'flex'; setTimeout(() => next.classList.add('active'), 50);
         if(id === 'scr-map') renderMap();
     }
-
-    function prevStep() { if(current > 0) loadQuestion(current - 1); }
 </script>
 </body>
 </html>
-
