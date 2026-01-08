@@ -15,51 +15,27 @@
 
         body { font-family: 'Poppins', sans-serif; background: var(--bg); margin: 0; color: var(--primary); overflow-x: hidden; }
 
-        /* BURBUJAS */
         .bubble { position: fixed; bottom: -120px; background: rgba(212, 175, 55, 0.3); border-radius: 50%; z-index: -1; animation: floatUp 15s infinite linear; pointer-events: none; }
         @keyframes floatUp { 0% { transform: translateY(0) scale(1); opacity: 0; } 50% { opacity: 0.6; } 100% { transform: translateY(-120vh) scale(1.5); opacity: 0; } }
 
-        /* ADVERTENCIA DE NOMBRE ANIMADA */
         #name-warning { color: var(--incorrect); font-size: 14px; font-weight: 800; margin-bottom: 10px; display: none; animation: shake 0.4s ease-in-out; }
         @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-8px); } 75% { transform: translateX(8px); } }
 
-        /* PANTALLAS */
-        .screen { 
-            min-height: 100vh; width: 100vw; display: none; flex-direction: column; 
-            justify-content: center; align-items: center; padding: 20px; 
-            box-sizing: border-box; opacity: 0; transform: translateY(15px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
+        .screen { min-height: 100vh; width: 100vw; display: none; flex-direction: column; justify-content: center; align-items: center; padding: 20px; box-sizing: border-box; opacity: 0; transform: translateY(15px); transition: opacity 0.5s ease, transform 0.5s ease; }
         .screen.active { display: flex; opacity: 1; transform: translateY(0); }
 
-        /* ANIMACI�N MEN� ORIGINAL */
-        @keyframes menuFly {
-            0% { transform: translate(var(--mx), var(--my)) scale(0); opacity: 0; }
-            100% { transform: translate(0, 0) scale(1); opacity: 1; }
-        }
+        @keyframes menuFly { 0% { transform: translate(var(--mx), var(--my)) scale(0); opacity: 0; } 100% { transform: translate(0, 0) scale(1); opacity: 1; } }
         .fly-item { animation: menuFly 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
 
-        /* ESTADISTICAS */
         .stats-bar { position: absolute; top: 20px; right: 20px; text-align: right; font-size: 12px; font-weight: 700; color: #7f8c8d; }
         .live-dot { display: inline-block; width: 8px; height: 8px; background: #27ae60; border-radius: 50%; margin-right: 5px; animation: pulse 1.5s infinite; }
         @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
 
-        /* NAVEGACI�N */
         .nav-tools { position: fixed; top: 20px; left: 20px; display: flex; gap: 10px; z-index: 1000; }
         .tool-btn { background: white; border: 2px solid var(--primary); padding: 10px 15px; border-radius: 12px; cursor: pointer; font-weight: 800; box-shadow: 3px 3px 0 var(--accent); }
 
-        /* CINEM�TICA PICOS */
-        #cinema { 
-            position: fixed; top: -125%; left: 0; width: 100%; height: 110%; 
-            display: flex; justify-content: center; align-items: center; 
-            z-index: 3000; color: white; font-size: 3.5rem; font-weight: 900; background: var(--primary);
-            transition: top 1.2s cubic-bezier(0.19, 1, 0.22, 1);
-        }
-        #cinema::after {
-            content: ""; position: absolute; bottom: -38px; left: 0; width: 100%; height: 40px;
-            background: inherit;
-            clip-path: polygon(0% 0%, 5% 100%, 10% 0%, 15% 100%, 20% 0%, 25% 100%, 30% 0%, 35% 100%, 40% 0%, 45% 100%, 50% 0%, 55% 100%, 60% 0%, 65% 100%, 70% 0%, 75% 100%, 80% 0%, 85% 100%, 90% 0%, 95% 100%, 100% 0%);
-        }
+        #cinema { position: fixed; top: -125%; left: 0; width: 100%; height: 110%; display: flex; justify-content: center; align-items: center; z-index: 3000; color: white; font-size: 3.5rem; font-weight: 900; background: var(--primary); transition: top 1.2s cubic-bezier(0.19, 1, 0.22, 1); }
+        #cinema::after { content: ""; position: absolute; bottom: -38px; left: 0; width: 100%; height: 40px; background: inherit; clip-path: polygon(0% 0%, 5% 100%, 10% 0%, 15% 100%, 20% 0%, 25% 100%, 30% 0%, 35% 100%, 40% 0%, 45% 100%, 50% 0%, 55% 100%, 60% 0%, 65% 100%, 70% 0%, 75% 100%, 80% 0%, 85% 100%, 90% 0%, 95% 100%, 100% 0%); }
         #cinema.show { top: 0; }
 
         .card { background: white; width: 100%; max-width: 480px; padding: 40px; border-radius: 35px; box-shadow: 0 20px 50px rgba(0,0,0,0.05); text-align: center; display: flex; flex-direction: column; align-items: center; }
@@ -76,20 +52,20 @@
 <div id="cinema"></div>
 
 <div class="nav-tools" id="global-nav" style="display:none;">
-    <button class="tool-btn" onclick="prevStep()">? ATR�S</button>
+    <button class="tool-btn" onclick="prevStep()">← ATRÁS</button>
     <button class="tool-btn" onclick="nav('scr-map')">MAPA</button>
     <button class="tool-btn" onclick="location.reload()">MENU</button>
 </div>
 
 <div id="scr-menu" class="screen active">
     <div class="stats-bar">
-        <div><span class="live-dot"></span>En linea: <span id="val-online">1</span></div>
+        <div><span class="live-dot"></span>En línea: <span id="val-online">1</span></div>
         <div>Visitas: <span id="val-vistas">0</span></div>
     </div>
     <div class="fly-item" style="--mx: 0; --my: -100vh;">
-        <h1 style="border: 4px solid var(--primary); padding: 15px; background: white; box-shadow: 8px 8px 0 var(--accent);">QUIZ BIBLICO</h1>
+        <h1 style="border: 4px solid var(--primary); padding: 15px; background: white; box-shadow: 8px 8px 0 var(--accent);">QUIZ BÍBLICO</h1>
     </div>
-    <p class="fly-item" style="--mx: -100vw; --my: 0; font-style: italic; margin: 20px 0;">Juan 5:39: Escudri�ad las escrituras...</p>
+    <p class="fly-item" style="--mx: -100vw; --my: 0; font-style: italic; margin: 20px 0;">Juan 5:39: Escudriñad las escrituras...</p>
     <button class="mc-btn fly-item" style="--mx: 100vw; --my: 100vh;" onclick="nav('scr-terms')">COMENZAR</button>
     <div class="signature fly-item" style="--mx: 0; --my: 100vh;">BY: DANYELO</div>
 </div>
@@ -98,8 +74,8 @@
     <div class="card">
         <h2>Bienvenido</h2>
         <div style="text-align:left; font-size:14px; margin-bottom:20px;">
-            <p>� Basado en la Reina Valera 1960.</p>
-            <p>� Escudri�ad las Escrituras porque en ellas ten�is la vida eterna.</p>
+            <p>• Basado en la Reina Valera 1960.</p>
+            <p>• Escudriñad las Escrituras porque en ellas tenéis la vida eterna.</p>
             <label style="font-weight:800; cursor:pointer;"><input type="checkbox" id="check-terms"> Acepto participar con respeto</label>
         </div>
         <button class="mc-btn" onclick="if(document.getElementById('check-terms').checked) nav('scr-modes'); else alert('Debes aceptar para continuar');">SIGUIENTE</button>
@@ -110,24 +86,24 @@
     <div class="card">
         <h3>Elige tu nivel</h3>
         <button class="mc-btn" onclick="setMode('aprendiz')">Modo Aprendiz</button>
-        <button class="mc-btn" style="background:var(--accent);" onclick="setMode('teologo')">Modo Teologo</button>
+        <button class="mc-btn" style="background:var(--accent);" onclick="setMode('teologo')">Modo Teólogo</button>
     </div>
 </div>
 
 <div id="scr-warn-teo" class="screen">
     <div class="card" style="border: 4px solid var(--accent);">
-        <h2 style="color:var(--accent);">?? NIVEL TE�LOGO</h2>
-        <p style="font-weight:700;">"Escudri�ad las Escrituras..."</p>
-        <p>Este modo no es para aficionados. Se requiere un conocimiento profundo de genealog�as, profec�as y detalles t�cnicos de la Biblia. �Tu fe y estudio est�n a la altura?</p>
-        <button class="mc-btn" onclick="nav('scr-name')">S� QUE PUEDO</button>
+        <h2 style="color:var(--accent);">⚠️ NIVEL TEÓLOGO</h2>
+        <p style="font-weight:700;">"Escudriñad las Escrituras..."</p>
+        <p>Este modo no es para aficionados. Se requiere un conocimiento profundo de genealogías, profecías y detalles técnicos de la Biblia. ¿Tu fe y estudio están a la altura?</p>
+        <button class="mc-btn" onclick="nav('scr-name')">SÉ QUE PUEDO</button>
     </div>
 </div>
 
 <div id="scr-name" class="screen">
     <div class="card">
-        <h3>�Cual es tu nombre?</h3>
-        <div id="name-warning">?? ESCRIBE TU NOMBRE PARA CONTINUAR</div>
-        <input type="text" id="user-name" placeholder="Tu nombre aqu�..." style="width:100%; padding:15px; border-radius:12px; border:2px solid #eee; margin-bottom:20px; text-align:center; font-family: inherit; font-size: 16px;">
+        <h3>¿Cuál es tu nombre?</h3>
+        <div id="name-warning">⚠️ ESCRIBE TU NOMBRE PARA CONTINUAR</div>
+        <input type="text" id="user-name" placeholder="Tu nombre aquí..." style="width:100%; padding:15px; border-radius:12px; border:2px solid #eee; margin-bottom:20px; text-align:center; font-family: inherit; font-size: 16px;">
         <button class="mc-btn" onclick="startGame()">ENTRAR AL RETO</button>
     </div>
 </div>
@@ -162,17 +138,17 @@
 
 <script>
     const dbAprendiz = [
-        { q: "�Cuantos mandamientos recibio Moises?", a: "10", o: ["5", "7", "12"], r: "Exodo 20", d: "Facil", c: "var(--easy)" },
-        { q: "�Quien vencio al gigante Goliat?", a: "David", o: ["Sanson", "Saul", "Josue"], r: "1 Samuel 17", d: "Facil", c: "var(--easy)" },
-        { q: "Primer libro de la Biblia", a: "Genesis", o: ["Exodo", "Mateo", "Salmos"], r: "Genesis 1:1", d: "Facil", c: "var(--easy)" }
+        { q: "¿Cuántos mandamientos recibió Moisés?", a: "10", o: ["5", "7", "12"], r: "Éxodo 20", d: "Fácil", c: "var(--easy)" },
+        { q: "¿Quién venció al gigante Goliat?", a: "David", o: ["Sansón", "Saúl", "Josué"], r: "1 Samuel 17", d: "Fácil", c: "var(--easy)" },
+        { q: "Primer libro de la Biblia", a: "Génesis", o: ["Éxodo", "Mateo", "Salmos"], r: "Génesis 1:1", d: "Fácil", c: "var(--easy)" }
     ];
 
     const dbTeologo = [
-        { q: "�Cual era el nombre del escriba que escribio las profecias de Jeremias?", a: "Baruc", o: ["Esdras", "Guepazi", "Sera�as"], r: "Jeremias 36:4", d: "Leyenda", c: "var(--legendary)" },
-        { q: "�En que monte murio Aaron, hermano de Moises?", a: "Monte Hor", o: ["Monte Nebo", "Monte Sinai", "Monte Carmelo"], r: "Numeros 20:28", d: "Leyenda", c: "var(--legendary)" },
-        { q: "�Cual era el nombre del padre de Matusalen?", a: "Enoc", o: ["Lamec", "Set", "Jared"], r: "Genesis 5:21", d: "Divino", c: "var(--divine)" },
-        { q: "�Quien fue el unico juez de Israel que mato a 600 filisteos con una aguijada de bueyes?", a: "Samgar", o: ["Otoniel", "Aod", "Sans�n"], r: "Jueces 3:31", d: "Divino", c: "var(--divine)" },
-        { q: "�Como se llamaba la mujer de Lapidot que fue Jueza en Israel?", a: "D�bora", o: ["Jael", "Rahab", "Noem�"], r: "Jueces 4:4", d: "Divino", c: "var(--divine)" }
+        { q: "¿Cuál era el nombre del escriba que escribió las profecías de Jeremías?", a: "Baruc", o: ["Esdras", "Guepazi", "Seraías"], r: "Jeremías 36:4", d: "Leyenda", c: "var(--legendary)" },
+        { q: "¿En qué monte murió Aarón, hermano de Moisés?", a: "Monte Hor", o: ["Monte Nebo", "Monte Sinai", "Monte Carmelo"], r: "Números 20:28", d: "Leyenda", c: "var(--legendary)" },
+        { q: "¿Cuál era el nombre del padre de Matusalén?", a: "Enoc", o: ["Lamec", "Set", "Jared"], r: "Génesis 5:21", d: "Divino", c: "var(--divine)" },
+        { q: "¿Quién fue el único juez de Israel que mató a 600 filisteos con una aguijada de bueyes?", a: "Samgar", o: ["Otoniel", "Aod", "Sansón"], r: "Jueces 3:31", d: "Divino", c: "var(--divine)" },
+        { q: "¿Cómo se llamaba la mujer de Lapidot que fue Jueza en Israel?", a: "Débora", o: ["Jael", "Rahab", "Noemí"], r: "Jueces 4:4", d: "Divino", c: "var(--divine)" }
     ];
 
     let quizData = [], current = 0, pName = "", answers = [], lastDiff = "";
@@ -202,12 +178,7 @@
     function startGame() {
         const nameInput = document.getElementById('user-name').value.trim();
         const warning = document.getElementById('name-warning');
-        
-        if(nameInput === "") {
-            warning.style.display = 'block';
-            return;
-        }
-        
+        if(nameInput === "") { warning.style.display = 'block'; return; }
         warning.style.display = 'none';
         pName = nameInput;
         quizData.forEach(q => q.mix = [q.a, ...q.o].sort(()=>Math.random()-0.5));
@@ -258,9 +229,9 @@
         nav('scr-end');
         let correct = answers.filter((a,i)=> a === quizData[i].a).length;
         let p = Math.round((correct/quizData.length)*100);
-        document.getElementById('final-res').innerText = "�Terminado, " + pName + "!";
+        document.getElementById('final-res').innerText = "¡Terminado, " + pName + "!";
         document.getElementById('final-score').innerText = "Puntaje: " + p + "%";
-        document.getElementById('final-badge').innerText = p >= 80 ? "??" : "??";
+        document.getElementById('final-badge').innerText = p >= 80 ? "👑" : "📜";
         confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
     }
 
