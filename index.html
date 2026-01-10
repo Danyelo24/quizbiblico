@@ -183,7 +183,7 @@
 
     let history = ['scr-menu'];
     let quizData = [], current = 0, pName = "", answers = [];
-    let lastDifficulty = ""; // Control de cortinas
+    let lastDifficulty = ""; 
 
     const dbAprendiz = [
         { q: "¿Quién construyó el arca?", a: "Noé", o: ["Moisés", "Abraham", "Saúl"], r: "Génesis 6", d: "Fácil", c: "var(--easy)" },
@@ -205,7 +205,17 @@
         { q: "¿Quién negó a Jesús tres veces?", a: "Pedro", o: ["Juan", "Andrés", "Santiago"], r: "Mateo 26", d: "Difícil", c: "var(--hard)" },
         { q: "¿Quién fue el primer mártir cristiano?", a: "Esteban", o: ["Pablo", "Felipe", "Lucas"], r: "Hechos 7", d: "Difícil", c: "var(--hard)" },
         { q: "¿Cuántos años vivió Matusalén?", a: "969", o: ["950", "800", "1000"], r: "Génesis 5", d: "Difícil", c: "var(--hard)" },
-        { q: "¿Qué mar abrió Moisés?", a: "Mar Rojo", o: ["Mar Muerto", "Mar de Galilea", "Mediterráneo"], r: "Éxodo 14", d: "Difícil", c: "var(--hard)" }
+        { q: "¿Qué mar abrió Moisés?", a: "Mar Rojo", o: ["Mar Muerto", "Mar de Galilea", "Mediterráneo"], r: "Éxodo 14", d: "Difícil", c: "var(--hard)" },
+        { q: "¿Qué animal habló con su dueño, el profeta Balaam?", a: "Un asna", o: ["Un perro", "Un león", "Una serpiente"], r: "Números 22:28", d: "Fácil", c: "var(--easy)" },
+        { q: "¿Cuántos días y noches llovió durante el diluvio?", a: "40 días y 40 noches", o: ["7 días", "12 días", "100 días"], r: "Génesis 7:12", d: "Fácil", c: "var(--easy)" },
+        { q: "¿Quién fue lanzado al foso de los leones?", a: "Daniel", o: ["José", "David", "Pedro"], r: "Daniel 6:16", d: "Fácil", c: "var(--easy)" },
+        { q: "¿Qué usó David para vencer a Goliat?", a: "Una honda y una piedra", o: ["Una espada", "Una lanza", "Un arco"], r: "1 Samuel 17:50", d: "Fácil", c: "var(--easy)" },
+        { q: "¿Cuál era el trabajo de Pedro antes de seguir a Jesús?", a: "Pescador", o: ["Carpintero", "Pastor", "Médico"], r: "Mateo 4:18", d: "Fácil", c: "var(--easy)" },
+        { q: "¿Quién fue la madre de Jesús?", a: "María", o: ["Marta", "Sara", "Isabel"], r: "Lucas 1:31", d: "Fácil", c: "var(--easy)" },
+        { q: "¿Cuántas plagas envió Dios a Egipto?", a: "10 plagas", o: ["7 plagas", "3 plagas", "12 plagas"], r: "Éxodo 7-12", d: "Fácil", c: "var(--easy)" },
+        { q: "¿Qué comida cayó del cielo para alimentar a los israelitas?", a: "Maná", o: ["Codornices", "Pan", "Fruta"], r: "Éxodo 16:15", d: "Fácil", c: "var(--easy)" },
+        { q: "¿Quién era el gigante que desafió a Israel?", a: "Goliat", o: ["Sanson", "Saúl", "Herodes"], r: "1 Samuel 17:4", d: "Fácil", c: "var(--easy)" },
+        { q: "¿En qué jardín vivieron Adán y Eva?", a: "Edén", o: ["Getsemaní", "Canaán", "Sinaí"], r: "Génesis 2:8", d: "Fácil", c: "var(--easy)" }
     ];
 
     const dbTeologo = [
@@ -214,21 +224,29 @@
         { q: "¿Padre de Matusalén?", a: "Enoc", o: ["Lamec", "Jared", "Set"], r: "Génesis 5:21", d: "Legendario", c: "var(--legendary)" },
         { q: "¿Juez que mató 600 filisteos?", a: "Samgar", o: ["Aod", "Sansón", "Otoniel"], r: "Jueces 3:31", d: "Legendario", c: "var(--legendary)" },
         { q: "¿Valle de huesos secos?", a: "Ezequiel", o: ["Isaías", "Jeremías", "Daniel"], r: "Ezequiel 37", d: "Legendario", c: "var(--legendary)" },
-        { q: "¿Compañero primer viaje?", a: "Bernabé", o: ["Silas", "Lucas", "Timoteo"], r: "Hechos 13", d: "Legendario", c: "var(--legendary)" },
+        { q: "¿Compañero de saulo en el primer viaje?", a: "Bernabé", o: ["Silas", "Lucas", "Timoteo"], r: "Hechos 13", d: "Legendario", c: "var(--legendary)" },
         { q: "¿Monte donde murió Aarón?", a: "Monte Hor", o: ["Monte Nebo", "Sinaí", "Carmelo"], r: "Números 20", d: "Legendario", c: "var(--legendary)" },
-        { q: "¿Reina de Judá?", a: "Atalía", o: ["Jezabel", "Vasti", "Ester"], r: "2 Reyes 11", d: "Legendario", c: "var(--legendary)" },
-        { q: "¿Ciudad trompetas?", a: "Jericó", o: ["Hai", "Damasco", "Gabaón"], r: "Josué 6", d: "Legendario", c: "var(--legendary)" },
-        { q: "¿Autor Hechos?", a: "Lucas", o: ["Pablo", "Pedro", "Juan"], r: "Hechos 1", d: "Legendario", c: "var(--legendary)" },
+        { q: "¿Reina de Judá?", a: "Atalía", o: ["Jezabel", "Vasti", "Ester"], r: "2 Reyes 11", d: "Legendary", c: "var(--legendary)" },
+        { q: "¿Ciudad trompetas?", a: "Jericó", o: ["Hai", "Damasco", "Gabaón"], r: "Josué 6", d: "Legendary", c: "var(--legendary)" },
+        { q: "¿Autor de Hechos?", a: "Lucas", o: ["Pablo", "Pedro", "Juan"], r: "Hechos 1", d: "Legendary", c: "var(--legendary)" },
         { q: "¿Pozo de Jacob?", a: "Harán", o: ["Bethel", "Siquem", "Beerseba"], r: "Génesis 29", d: "Divine", c: "var(--divine)" },
-        { q: "¿Foso de leones?", a: "Daniel", o: ["Ezequiel", "Amós", "Jonás"], r: "Daniel 6", d: "Divine", c: "var(--divine)" },
-        { q: "¿Ancianos Apocalipsis?", a: "24", o: ["12", "7", "144"], r: "Apocalipsis 4", d: "Divine", c: "var(--divine)" },
+        { q: "¿Profecia de 70 semanas?", a: "Daniel", o: ["Ezequiel", "Amós", "Jonás"], r: "Daniel 6", d: "Divine", c: "var(--divine)" },
+        { q: "¿Cuantos ancianos muestra Apocalipsis?", a: "24", o: ["12", "7", "144"], r: "Apocalipsis 4", d: "Divine", c: "var(--divine)" },
         { q: "¿Sumo Sacerdote?", a: "Caifás", o: ["Anás", "Esdras", "Aarón"], r: "Juan 18", d: "Divine", c: "var(--divine)" },
         { q: "¿Golgotha?", a: "Lugar de la Calavera", o: ["Monte Santo", "Lugar del Rey", "Monte Olivo"], r: "Mateo 27", d: "Divine", c: "var(--divine)" },
-        { q: "¿Absalón?", a: "Absalón", o: ["Adonías", "Amnón", "Salomón"], r: "2 Samuel 15", d: "Divine", c: "var(--divine)" },
+        { q: "¿Quién se quedó atrapado por su cabello en una encina?", a: "Absalón", o: ["Adonías", "Amnón", "Salomón"], r: "2 Samuel 15", d: "Divine", c: "var(--divine)" },
         { q: "¿Cobrador?", a: "Mateo", o: ["Lucas", "Juan", "Judas"], r: "Mateo 9", d: "Divine", c: "var(--divine)" },
         { q: "¿Carro fuego?", a: "Elías", o: ["Eliseo", "Moisés", "Enoc"], r: "2 Reyes 2", d: "Divine", c: "var(--divine)" },
-        { q: "¿Tiberias?", a: "Tiberias", o: ["Rojo", "Muerto", "Grande"], r: "Juan 6", d: "Divine", c: "var(--divine)" },
-        { q: "¿Estatua?", a: "Nabucodonosor", o: ["Daniel", "Ciro", "Belsasar"], r: "Daniel 2", d: "Divine", c: "var(--divine)" }
+        { q: "¿Con qué otro nombre se le conoce al Mar de Galilea?", a: "Tiberias", o: ["Rojo", "Muerto", "Grande"], r: "Juan 6", d: "Divine", c: "var(--divine)" },
+        { q: "¿Estatua?", a: "Nabucodonosor", o: ["Daniel", "Ciro", "Belsasar"], r: "Daniel 2", d: "Divine", c: "var(--divine)" },
+        { q: "¿Cómo se llamaba el padre de Finees y Ofni?", a: "Elí", o: ["Samuel", "Aarón", "Zadoc"], r: "1 Samuel 1:3", d: "Legendary", c: "var(--legendary)" },
+        { q: "¿En qué isla estuvo desterrado Juan?", a: "Patmos", o: ["Creta", "Chipre", "Malta"], r: "Apocalipsis 1:9", d: "Legendary", c: "var(--legendary)" },
+        { q: "¿Quién fue el sucesor de Elías?", a: "Eliseo", o: ["Samuel", "Natán", "Gad"], r: "2 Reyes 2:15", d: "Legendary", c: "var(--legendary)" },
+        { q: "¿Libro más corto del AT?", a: "Abdías", o: ["Hageo", "Nahúm", "Jonás"], r: "Biblia", d: "Divine", c: "var(--divine)" },
+        { q: "¿Quién era Melquisedec?", a: "Rey de Salem", o: ["Abimelec", "Esdras", "Josué"], r: "Génesis 14:18", d: "Divine", c: "var(--divine)" },
+        { q: "¿Monte del Arca?", a: "Ararat", o: ["Horeb", "Sinaí", "Pisga"], r: "Génesis 8:4", d: "Legendary", c: "var(--legendary)" },
+        { q: "¿Quién vio huesos secos?", a: "Ezequiel", o: ["Jeremías", "Isaías", "Amós"], r: "Ezequiel 37:1", d: "Divine", c: "var(--divine)" },
+        { q: "¿Primer rey de Israel?", a: "Saúl", o: ["David", "Salomón", "Roboam"], r: "1 Samuel 10:1", d: "Legendary", c: "var(--legendary)" }
     ];
 
     window.onload = () => { for(let i=0; i<15; i++) createBubble(); loadComments(); };
@@ -268,7 +286,6 @@
         const q = quizData[idx];
         const cin = document.getElementById('cinema');
 
-        // SOLO ACTIVAR CORTINAS SI LA DIFICULTAD ES DISTINTA A LA ANTERIOR
         if (q.d !== lastDifficulty) {
             lastDifficulty = q.d;
             cin.style.backgroundColor = q.c; cin.innerText = q.d; cin.classList.add('show');
